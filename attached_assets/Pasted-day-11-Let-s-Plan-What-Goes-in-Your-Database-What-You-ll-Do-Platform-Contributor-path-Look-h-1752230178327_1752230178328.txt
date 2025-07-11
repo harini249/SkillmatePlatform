@@ -1,0 +1,145 @@
+day 11 Let’s Plan What Goes in Your Database
+
+🎯 What You’ll Do:
+
+Platform Contributor path:
+
+Look how Mongoose models works.
+
+
+Create a new model (for example, “Note” with a title and text)
+
+
+
+🧠 Think About:
+
+What does your app need to remember?
+
+
+What parts of your data are most important?                                                                                                                                                                                          day 12   Let’s Build a Form That Actually Saves Stuff
+
+
+
+🎯 What You’ll Do:
+
+Platform Contributor path:
+
+Build a simple form (e.g., add a new note) or something if your feature has to submit the data to the database.
+
+
+When the form is submitted, save the data to your database
+
+
+🧠 Think About:
+
+What makes a form easy or hard to fill out?
+
+
+What should happen after someone clicks “Submit”?
+day 13 Let’s Fix Little Mistakes and Make It Smoother
+
+
+
+🎯 What You’ll Do:
+
+Fix any bugs or errors you saw earlier
+
+
+Add checks in your code so the app doesn’t crash when something is missing
+
+
+Make your layout look nicer (use spacing, colors, and buttons that make sense)
+
+
+🧠 Think About:
+
+Did any part of your app confuse a friend or mentor?
+
+
+What’s one tiny change that made things feel better?
+
+
+day 14  Let Someone Test Your App
+
+
+
+🎯 What You’ll Do:
+
+Ask a friend, mentor, or peer to try your app
+
+
+Watch what they do. What’s easy for them? What’s hard?
+
+
+Ask: “What confused you?” or “What would you improve?”
+
+
+Note: Meanwhile, Check the flow of your app (as a feature in skillmate.ai) and check how integration can actually work.
+
+
+
+🧠 Think About:
+
+Did someone use your app differently than you expected?
+
+
+What did they like best?
+
+
+day 15  Add Something Fun or Unique
+
+
+
+🎯 What You’ll Do:
+
+Platform Contributor path:
+
+Add something like dark mode, emoji reactions, or animated toasts.
+or
+
+Build any small feature that you enjoy sound effects, themes, or a leaderboard.
+
+
+Use a library like Shadcn UI to make it easy.
+
+
+🧠 Think About:
+
+What would make a user smile when using your app?
+
+
+What do you enjoy building for fun?
+
+day 17 Practice Git the Right Way
+
+🎯 What You’ll Do:
+
+Learn to use Git commit messages (small notes about what you changed).
+
+
+Try making a new branch (a separate lane where you build safely).
+
+
+Push your code to GitHub and open a Pull Request (like submitting homework for review).
+
+
+🧠 Think About:
+
+Why do we use Git instead of saving files as “final_final_real_last_v3”?
+
+day 18DRY = Don’t Repeat Yourself
+
+🎯 What You’ll Do:
+
+Find 2 pieces of your code that look the same (like buttons, cards, forms).
+
+
+Turn them into components or functions you can reuse anywhere.
+
+
+🧠 Think About:
+
+What part of your UI or logic keeps repeating?
+
+
+Could you give it a name and reuse it?

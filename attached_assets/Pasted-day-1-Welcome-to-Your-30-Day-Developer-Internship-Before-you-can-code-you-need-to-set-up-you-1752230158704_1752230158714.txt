@@ -1,0 +1,195 @@
+day 1       Welcome to Your 30-Day Developer Internship
+
+Before you can code, you need to set up your “coding playground” — a space where you can write, test, and see your work.
+
+🎯 What You’ll Do:
+
+If you want to build your own mini project on Skillmate:
+
+Start a new project folder on GitHub (an online code-sharing site).
+
+Use your favorite tools (like HTML, CSS, JavaScript, or Python).                                                                                day 2 Explore the Pages & How Login Works
+
+🎯 What You’ll Do:
+
+Create your skillmate page @ skillmate.ai
+
+Understand How it works from onboarding to your Dashboard.
+
+Then, Try to replicate a basic flow of skillmate,
+
+Like, Plan a flow like this: home page → login → dashboard (a page that shows user info).
+
+Decide what should be private (only shown if someone is logged in) and what is public.
+
+🧠 Think About:
+
+What should your app show when someone visits it for the first time?
+
+What should be hidden unless someone logs in?                                                                                                      day 3 Let’s Build the Login Page
+
+🎯 What You’ll Do:
+
+Now you're in
+
+Start Create a simple page that asks for a name or email.
+
+Try next-auth to connect it to Google login.
+
+Add a button that logs the person in.
+
+Now you should be able to see a basic web page with a login and the details getting saved in backend MongoDB
+
+🧠 Think About:
+
+What should happen if someone types the wrong password?
+
+What message should your app show when login works?
+
+day 4 Make a Private Page Just for Logged-In Users
+
+🎯 What You’ll Do:
+
+Awesome! Now, you've your own page created with Single Signon along with a Backend MongoDB setup done.
+
+Create a “dashboard” page (like a profile page).
+
+Use next-auth to check: is the user logged in?
+
+If not, send them back to the login screen.
+
+🧠 Think About:
+
+What should be on your dashboard?
+
+How does the app know someone is “logged in”?
+
+Try visiting the page without logging in — does it block you?
+
+Write a short note in a file called README to explain what you're going to build.
+
+🧠 Think About:
+
+What do you want to build someday? A game? A website? A tool?                                                                      day 5Let’s Clean Up and Reflect
+
+🎯 What You’ll Do:
+
+Correct! Frontend is equally important as backend.
+
+Tidy your layout with Tailwind (a tool that helps you style with classes).
+
+Make sure all fields are filled in correctly.
+
+Remove any code you didn’t end up using.
+
+Reorganize your folders and files.
+
+Make your code easier to read (add comments or clean names).
+
+Note: Add Skillmate logo to your application & make it look professional
+
+🧠 Think About:
+
+What was your favorite task this week?
+
+What part of your app still feels confusing?
+
+day 6  Let Your Users Exit
+
+🎯 What You’ll Do:
+
+Wow! Its good to see what you've built with frontend, backend & basic login & user access functionality.
+
+Now, lets go-ahead with Platform Contributor path: Differentiate between registered users and a visitor,
+
+Create your own logout logic.
+
+Clear the user data when they click “logout.”
+
+🧠 Think About:
+
+Why is it important to log out properly?
+
+What should happen after someone logs out?
+
+day 7 Show Off What You Built!
+
+Amazing! Now you have a simple working application with you in a decent tech stack as skillmate. Let's see what you have built.
+
+🎯 What You’ll Do:
+
+Make a quick video (or slides) to show:
+
+What your app does
+
+How login works
+
+What you learned
+
+Share it with your peers or post online
+
+🧠 Think About:
+
+What was the hardest part this week?
+
+What are you most proud of?                                                                                                                                 day 8 What’s an API and Why Does It Matter?
+
+🎯 What You’ll Do:
+
+Platform Contributor path:
+
+Chose an idea that can align with skillmate existing roadmap. [Talk to our developers if you have any question. write to chat@skillmate.ai immediately]
+
+Create a basic API using Node.js or Python Flask.
+
+Make one GET route (where the app can get something) and one POST route (where it can send something).
+
+If you want your API's to be integrated with existing Skillmate backend code and need to look at the routes then reach out to our developers & try implementing them as part of your routine.
+
+or
+
+Try running a test request using Postman (a tool that lets you test APIs easily).
+
+🧠 Think About:
+
+If your app is a phone, what part of it would be the API?
+
+What does the API help you avoid doing manually?
+
+day 9 Make Something Small, But Real
+
+🎯 What You’ll Do:
+
+Platform Contributor path:
+
+Let's give life to your idea (creating a webinar, a product selling portal, community platform or anything that resonates with skillmate.ai)
+
+picturize your idea and write down how a backend database can look alike.
+
+Save the data into MongoDB using Mongoose (a helper for talking to the database).
+
+🧠 Think About:
+
+What feature would be fun to show to your friends?
+
+What data do you want to save?
+
+day 10 Connect Your Frontend to Your Backend
+
+🎯 What You’ll Do:
+
+Platform Contributor path:
+
+Use fetch, Axios, or your tool to get data and show it.
+
+Make your page look nice while data is loading. Add loading messages while data is being fetched.
+
+Note: If you think, you're ahead of this. Then, start building on top of it.
+
+🧠 Think About:
+
+What should your app show if there’s no data?
+
+What should it say if something goes wrong?
+
+this i 1 to 10 task and then i will share other 5 days
