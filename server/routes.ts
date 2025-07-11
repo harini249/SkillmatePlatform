@@ -42,9 +42,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const loginData = loginSchema.parse(req.body);
       
-      const user = await storage.getUserByEmail(loginData.email);
-      if (!user) {
+      // For demo purposes, accept any email with password "password"
+      if (loginData.password !== "password") {
         return res.status(401).json({ message: "Invalid credentials" });
+      }
+      
+      let user = await storage.getUserByEmail(loginData.email);
+      
+      // If user doesn't exist, create them (demo behavior)
+      if (!user) {
+        user = await storage.createUser({
+          name: loginData.email.split('@')[0], // Use email prefix as name
+          email: loginData.email,
+          provider: "email",
+        });
       }
       
       // Store user in session
