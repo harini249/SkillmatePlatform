@@ -43,20 +43,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const loginData = loginSchema.parse(req.body);
       
-      // For demo purposes, accept any email with password "password"
-      if (loginData.password !== "password") {
-        return res.status(401).json({ message: "Invalid credentials" });
+      // Find user by email
+      const user = await storage.getUserByEmail(loginData.email);
+      
+      if (!user) {
+        return res.status(401).json({ message: "User not found. Please sign up first." });
       }
       
-      let user = await storage.getUserByEmail(loginData.email);
-      
-      // If user doesn't exist, create them (demo behavior)
-      if (!user) {
-        user = await storage.createUser({
-          name: loginData.email.split('@')[0], // Use email prefix as name
-          email: loginData.email,
-          provider: "email",
-        });
+      // In a real app, you'd verify the password hash here
+      // For this demo, we'll check if the user exists and has registered
+      if (!user.name || user.name.trim() === "") {
+        return res.status(401).json({ message: "Invalid account. Please sign up again." });
       }
       
       // Store user in session
@@ -80,16 +77,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.post("/api/auth/google", async (req, res) => {
     try {
-      // Mock Google OAuth for now - in production would use NextAuth
       const { name, email, avatar } = req.body;
+      
+      // Validate that we have the required Google user data
+      if (!name || !email) {
+        return res.status(400).json({ message: "Invalid Google user data" });
+      }
       
       let user = await storage.getUserByEmail(email);
       
+      // If user doesn't exist, create them with Google data
       if (!user) {
         user = await storage.createUser({
           name,
           email,
-          avatar,
+          avatar: avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=10b981&color=ffffff`,
           provider: "google",
           providerId: email,
         });
@@ -107,6 +109,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
       });
     } catch (error) {
+      console.error("Google auth error:", error);
       res.status(500).json({ message: "Failed to authenticate with Google" });
     }
   });

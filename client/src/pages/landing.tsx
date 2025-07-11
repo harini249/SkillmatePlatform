@@ -66,17 +66,28 @@ export default function Landing() {
   const handleGoogleLogin = () => {
     setIsGoogleLoading(true);
     
-    // Simulate Google OAuth flow
-    setTimeout(() => {
+    // In a real app, this would open Google OAuth popup
+    // For demo, we'll prompt user for their name and email
+    const name = prompt("Enter your full name:");
+    const email = prompt("Enter your email:");
+    
+    if (name && email) {
       const userData = {
-        name: "John Doe",
-        email: "john@example.com",
-        avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80",
+        name: name.trim(),
+        email: email.trim(),
+        avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=10b981&color=ffffff`,
       };
       
       googleAuthMutation.mutate(userData);
-      setIsGoogleLoading(false);
-    }, 1500);
+    } else {
+      toast({
+        title: "Login cancelled",
+        description: "Please provide your name and email to continue.",
+        variant: "destructive",
+      });
+    }
+    
+    setIsGoogleLoading(false);
   };
 
   const onSubmit = (data: LoginData) => {

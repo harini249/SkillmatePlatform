@@ -88,17 +88,28 @@ export default function Signup() {
   const handleGoogleSignup = () => {
     setIsGoogleLoading(true);
     
-    // Simulate Google OAuth flow
-    setTimeout(() => {
+    // In a real app, this would open Google OAuth popup
+    // For demo, we'll prompt user for their name
+    const name = prompt("Enter your full name:");
+    const email = prompt("Enter your email:");
+    
+    if (name && email) {
       const userData = {
-        name: "New Developer",
-        email: "developer@example.com",
-        avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80",
+        name: name.trim(),
+        email: email.trim(),
+        avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=10b981&color=ffffff`,
       };
       
       googleAuthMutation.mutate(userData);
-      setIsGoogleLoading(false);
-    }, 1500);
+    } else {
+      toast({
+        title: "Signup cancelled",
+        description: "Please provide your name and email to continue.",
+        variant: "destructive",
+      });
+    }
+    
+    setIsGoogleLoading(false);
   };
 
   const onSubmit = (data: SignupData) => {
@@ -266,10 +277,8 @@ export default function Signup() {
             <div className="text-center">
               <p className="text-sm text-gray-600 dark:text-gray-400">
                 Already have an account?{" "}
-                <Link href="/login">
-                  <a className="text-skillmate-green hover:underline font-medium">
-                    Sign in here
-                  </a>
+                <Link href="/login" className="text-skillmate-green hover:underline font-medium">
+                  Sign in here
                 </Link>
               </p>
             </div>
