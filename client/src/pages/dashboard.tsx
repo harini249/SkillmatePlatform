@@ -8,12 +8,14 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { insertNoteSchema, type InsertNote } from "@shared/schema";
 import { useNotes } from "@/hooks/use-notes";
+import { useRealtime } from "@/hooks/use-realtime";
 import { useToast } from "@/hooks/use-toast";
-import { CalendarDays, StickyNote, Trophy, Plus, Trash2 } from "lucide-react";
+import { CalendarDays, StickyNote, Trophy, Plus, Trash2, Wifi, WifiOff } from "lucide-react";
 import { format } from "date-fns";
 
 export default function Dashboard() {
   const { notes, createNote, deleteNote, isCreating, isDeleting } = useNotes();
+  const { isConnected } = useRealtime();
   const { toast } = useToast();
 
   const {
@@ -71,12 +73,29 @@ export default function Dashboard() {
   return (
     <main className="container mx-auto px-4 py-8">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-          Developer Dashboard
-        </h1>
-        <p className="text-gray-600 dark:text-gray-300">
-          Track your internship progress and manage your learning notes
-        </p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+              Developer Dashboard
+            </h1>
+            <p className="text-gray-600 dark:text-gray-300">
+              Track your internship progress and manage your learning notes
+            </p>
+          </div>
+          <div className="flex items-center space-x-2">
+            {isConnected ? (
+              <>
+                <Wifi className="h-5 w-5 text-green-500" />
+                <span className="text-sm text-green-500 font-medium">Live</span>
+              </>
+            ) : (
+              <>
+                <WifiOff className="h-5 w-5 text-red-500" />
+                <span className="text-sm text-red-500 font-medium">Offline</span>
+              </>
+            )}
+          </div>
+        </div>
       </div>
 
       {/* Stats Cards */}
@@ -178,7 +197,15 @@ export default function Dashboard() {
       {/* Notes List */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-xl">Your Learning Notes</CardTitle>
+          <div className="flex items-center justify-between">
+            <CardTitle className="text-xl">Your Learning Notes</CardTitle>
+            {isConnected && (
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span className="text-sm text-green-500 font-medium">Real-time updates</span>
+              </div>
+            )}
+          </div>
         </CardHeader>
         <CardContent>
           {notes.length === 0 ? (

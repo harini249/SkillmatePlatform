@@ -1,5 +1,6 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
+import { WebSocketServer, WebSocket } from "ws";
 import { storage } from "./storage";
 import { insertUserSchema, insertNoteSchema, loginSchema } from "@shared/schema";
 import { z } from "zod";
@@ -170,6 +171,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const noteData = insertNoteSchema.parse({ ...req.body, userId });
       const note = await storage.createNote(noteData);
       
+      // Broadcast real-time update
+      (app as any).broadcastUpdate('note_created', note);
+      
       res.json(note);
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -193,6 +197,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(404).json({ message: "Note not found" });
       }
       
+      // Broadcast real-time update
+      (app as any).broadcastUpdate('note_deleted', { id: noteId, userId });
+      
       res.json({ message: "Note deleted successfully" });
     } catch (error) {
       res.status(500).json({ message: "Failed to delete note" });
@@ -200,5 +207,55 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   const httpServer = createServer(app);
+  
+  // WebSocket server for real-time updates
+  const wss = new WebSocketServer({ server: httpServer, path: '/ws' });
+  
+  // Store active connections
+  const connections = new Map<WebSocket, { userId?: number }>();
+  
+  wss.on('connection', (ws) => {
+    console.log('New WebSocket connection');
+    connections.set(ws, {});
+    
+    ws.on('message', (message) => {
+      try {
+        const data = JSON.parse(message.toString());
+        
+        // Handle user authentication for WebSocket
+        if (data.type === 'auth' && data.userId) {
+          const connectionInfo = connections.get(ws);
+          if (connectionInfo) {
+            connectionInfo.userId = data.userId;
+            connections.set(ws, connectionInfo);
+          }
+        }
+      } catch (error) {
+        console.error('WebSocket message error:', error);
+      }
+    });
+    
+    ws.on('close', () => {
+      console.log('WebSocket connection closed');
+      connections.delete(ws);
+    });
+  });
+  
+  // Helper function to broadcast updates to all connected users
+  function broadcastUpdate(type: string, data: any) {
+    connections.forEach((connectionInfo, ws) => {
+      if (ws.readyState === WebSocket.OPEN) {
+        ws.send(JSON.stringify({
+          type,
+          data,
+          timestamp: new Date().toISOString()
+        }));
+      }
+    });
+  }
+  
+  // Store broadcast function for use in routes
+  (app as any).broadcastUpdate = broadcastUpdate;
+  
   return httpServer;
 }
