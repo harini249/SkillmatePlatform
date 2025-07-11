@@ -14,7 +14,7 @@ import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/hooks/use-auth";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 
 const signupSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -35,6 +35,7 @@ export default function Signup() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const { toast } = useToast();
   const { refetch } = useAuth();
+  const [, setLocation] = useLocation();
 
   const {
     register,
@@ -57,6 +58,7 @@ export default function Signup() {
         description: "Your account has been created successfully.",
       });
       refetch();
+      setLocation("/dashboard");
     },
     onError: (error: any) => {
       toast({
@@ -75,6 +77,7 @@ export default function Signup() {
         description: "You have been signed up successfully.",
       });
       refetch();
+      setLocation("/dashboard");
     },
     onError: (error: any) => {
       toast({

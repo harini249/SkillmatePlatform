@@ -13,11 +13,13 @@ import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/hooks/use-auth";
+import { useLocation } from "wouter";
 
 export default function Landing() {
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const { toast } = useToast();
   const { refetch } = useAuth();
+  const [, setLocation] = useLocation();
 
   const {
     register,
@@ -35,6 +37,7 @@ export default function Landing() {
         description: "You have been logged in successfully.",
       });
       refetch();
+      setLocation("/dashboard");
     },
     onError: (error: any) => {
       toast({
@@ -53,6 +56,7 @@ export default function Landing() {
         description: "You have been logged in successfully.",
       });
       refetch();
+      setLocation("/dashboard");
     },
     onError: (error: any) => {
       toast({

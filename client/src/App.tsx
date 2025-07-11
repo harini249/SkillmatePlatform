@@ -10,6 +10,9 @@ import Landing from "@/pages/landing";
 import Signup from "@/pages/signup";
 import Dashboard from "@/pages/dashboard";
 import Feedback from "@/pages/feedback";
+import Profile from "@/pages/profile";
+import About from "@/pages/about";
+import Courses from "@/pages/courses";
 import NotFound from "@/pages/not-found";
 import { useAuth } from "@/hooks/use-auth";
 
@@ -30,9 +33,12 @@ function AppContent() {
       <Switch>
         <Route path="/" component={user ? Dashboard : Home} />
         <Route path="/home" component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/courses" component={Courses} />
         <Route path="/login" component={Landing} />
         <Route path="/signup" component={Signup} />
         <Route path="/dashboard" component={user ? Dashboard : Landing} />
+        <Route path="/profile" component={user ? Profile : Landing} />
         <Route path="/feedback" component={Feedback} />
         <Route component={NotFound} />
       </Switch>

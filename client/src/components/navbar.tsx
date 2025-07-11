@@ -1,4 +1,4 @@
-import { Moon, Sun, LogOut, User, Home, MessageSquare } from "lucide-react";
+import { Moon, Sun, LogOut, User, Home, MessageSquare, Info, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/components/theme-provider";
 import { useAuth } from "@/hooks/use-auth";
@@ -52,6 +52,18 @@ export function Navbar() {
                     <span>Home</span>
                   </Button>
                 </Link>
+                <Link href="/about">
+                  <Button variant="ghost" size="sm" className="flex items-center space-x-2">
+                    <Info className="h-4 w-4" />
+                    <span>About</span>
+                  </Button>
+                </Link>
+                <Link href="/courses">
+                  <Button variant="ghost" size="sm" className="flex items-center space-x-2">
+                    <BookOpen className="h-4 w-4" />
+                    <span>Courses</span>
+                  </Button>
+                </Link>
                 <Link href="/feedback">
                   <Button variant="ghost" size="sm" className="flex items-center space-x-2">
                     <MessageSquare className="h-4 w-4" />
@@ -73,6 +85,12 @@ export function Navbar() {
             
             {user && (
               <>
+                <Link href="/profile">
+                  <Button variant="ghost" size="sm" className="flex items-center space-x-2">
+                    <User className="h-4 w-4" />
+                    <span>Profile</span>
+                  </Button>
+                </Link>
                 <Link href="/feedback">
                   <Button variant="ghost" size="sm" className="flex items-center space-x-2">
                     <MessageSquare className="h-4 w-4" />
