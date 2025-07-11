@@ -1,4 +1,4 @@
-import { Moon, Sun, LogOut, User } from "lucide-react";
+import { Moon, Sun, LogOut, User, Home, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/components/theme-provider";
 import { useAuth } from "@/hooks/use-auth";
@@ -6,6 +6,7 @@ import { SkillmateLogo } from "@/components/skillmate-logo";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
+import { Link } from "wouter";
 
 export function Navbar() {
   const { theme, toggleTheme } = useTheme();
@@ -38,9 +39,48 @@ export function Navbar() {
     <nav className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <SkillmateLogo />
+          <Link href="/">
+            <SkillmateLogo className="cursor-pointer" />
+          </Link>
           
           <div className="flex items-center space-x-4">
+            {!user && (
+              <>
+                <Link href="/home">
+                  <Button variant="ghost" size="sm" className="flex items-center space-x-2">
+                    <Home className="h-4 w-4" />
+                    <span>Home</span>
+                  </Button>
+                </Link>
+                <Link href="/feedback">
+                  <Button variant="ghost" size="sm" className="flex items-center space-x-2">
+                    <MessageSquare className="h-4 w-4" />
+                    <span>Feedback</span>
+                  </Button>
+                </Link>
+                <Link href="/login">
+                  <Button variant="outline" size="sm">
+                    Sign In
+                  </Button>
+                </Link>
+                <Link href="/signup">
+                  <Button size="sm" className="bg-skillmate-green hover:bg-skillmate-dark-green">
+                    Sign Up
+                  </Button>
+                </Link>
+              </>
+            )}
+            
+            {user && (
+              <>
+                <Link href="/feedback">
+                  <Button variant="ghost" size="sm" className="flex items-center space-x-2">
+                    <MessageSquare className="h-4 w-4" />
+                    <span>Feedback</span>
+                  </Button>
+                </Link>
+              </>
+            )}
             <Button
               variant="ghost"
               size="icon"

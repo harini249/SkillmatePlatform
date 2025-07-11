@@ -7,6 +7,9 @@ This is a full-stack web application built with React, Express.js, and PostgreSQ
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+Real-time functionality requested and implemented.
+User's actual name should display in dashboard (not hardcoded names).
+Additional pages requested: Home, Signup, Feedback.
 
 ## System Architecture
 
@@ -52,9 +55,17 @@ Preferred communication style: Simple, everyday language.
 
 ### Note Management
 - CRUD operations for learning notes
-- Real-time updates using React Query
+- Real-time updates using WebSocket connections
 - Form validation and error handling
 - User-specific note isolation
+- Live status indicators and notifications
+
+### Real-time Features
+- WebSocket server implementation on `/ws` path
+- Live connection status in dashboard
+- Real-time note creation and deletion broadcasts
+- Toast notifications for multi-user updates
+- Automatic data synchronization across browser tabs
 
 ## Data Flow
 

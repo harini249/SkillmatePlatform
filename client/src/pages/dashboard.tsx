@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { insertNoteSchema, type InsertNote } from "@shared/schema";
 import { useNotes } from "@/hooks/use-notes";
 import { useRealtime } from "@/hooks/use-realtime";
+import { useAuth } from "@/hooks/use-auth";
 import { useToast } from "@/hooks/use-toast";
 import { CalendarDays, StickyNote, Trophy, Plus, Trash2, Wifi, WifiOff } from "lucide-react";
 import { format } from "date-fns";
@@ -16,6 +17,7 @@ import { format } from "date-fns";
 export default function Dashboard() {
   const { notes, createNote, deleteNote, isCreating, isDeleting } = useNotes();
   const { isConnected } = useRealtime();
+  const { user } = useAuth();
   const { toast } = useToast();
 
   const {
@@ -76,7 +78,7 @@ export default function Dashboard() {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-              Developer Dashboard
+              Welcome back, {user?.name}!
             </h1>
             <p className="text-gray-600 dark:text-gray-300">
               Track your internship progress and manage your learning notes

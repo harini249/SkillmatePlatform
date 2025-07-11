@@ -1,0 +1,227 @@
+🎯 Tech Stack:
+Frontend: Next.js, Tailwind CSS, ShadCN UI
+
+Backend: Node.js / Express or Next.js API routes
+
+Database: MongoDB (via Mongoose)
+
+Auth: NextAuth.js with Google login
+
+Version Control: GitHub
+
+Deployment (optional): Vercel or Replit
+
+📅 Day-by-Day Feature Breakdown:
+✅ Day 1: Set Up Coding Playground
+Goals:
+
+Initialize a GitHub repo (e.g., skillmate-mini-portal)
+
+Scaffold project using Next.js
+
+Setup folder structure (pages/, components/, lib/ etc.)
+
+✅ Day 2: Explore Pages & Basic Flow
+Pages to Create:
+
+/ → Home Page
+
+/login → Login Page (with NextAuth Google login)
+
+/dashboard → Private user dashboard (only after login)
+
+Logic:
+
+Public vs Private Routes
+
+Redirect unauthenticated users from dashboard to login
+
+✅ Day 3: Implement Google Login
+Features:
+
+Set up NextAuth with Google Provider
+
+Store user data (email, name, image) in MongoDB
+
+Show login success or error
+
+Components:
+
+Login button
+
+Auth handler
+
+✅ Day 4: Create Private Dashboard
+Features:
+
+Check session using useSession()
+
+Show user info in /dashboard
+
+Block access if not logged in
+
+✅ Day 5: Clean Up UI & Add Branding
+To Do:
+
+Use Tailwind CSS to improve UI
+
+Remove unused files
+
+Clean file structure
+
+🟢 Add Skillmate logo on header or footer
+
+✅ Day 6: Logout Functionality
+To Do:
+
+Add Logout button using signOut()
+
+On logout, redirect to /login
+
+Clear session data
+
+✅ Day 7: Showcase What You Built
+To Do:
+
+Create a simple walkthrough video or screen capture:
+
+Login working
+
+Dashboard with user info
+
+Protected routes
+
+Create README.md with demo info
+
+✅ Day 8: Build a Basic API
+Features:
+
+Create 2 endpoints:
+
+GET /api/notes → fetch all notes
+
+POST /api/notes → create a new note
+
+Tools:
+
+Node.js API routes or Next.js API
+
+Test using Postman or browser
+
+✅ Day 9: Create a Feature (e.g., Notes App)
+Features:
+
+Plan a real feature (example: Note Taking)
+
+MongoDB schema:
+
+js
+Copy
+Edit
+title: String,
+content: String,
+user: String (userId),
+createdAt: Date
+✅ Day 10: Connect Frontend to Backend
+Features:
+
+Use fetch() or axios to get/post notes
+
+Show loading state
+
+Handle errors gracefully
+
+✅ Day 11: Plan Database Schema
+Model:
+
+js
+Copy
+Edit
+Note {
+  title: String,
+  text: String,
+  userId: String,
+  createdAt: Date
+}
+Think:
+
+What other models? (User, Post, Feedback)
+
+Plan if using multiple collections
+
+✅ Day 12: Form to Save Data
+Page: /dashboard
+Form:
+
+Title input
+
+Textarea
+
+Submit button → POST to /api/notes
+
+Clear form on submit
+
+✅ Day 13: Fix Bugs & UI Improvements
+Tasks:
+
+Add input validations (no empty fields)
+
+Add error boundaries
+
+Improve UI using Tailwind
+
+Use better button styles (Shadcn UI)
+
+✅ Day 14: Test With Others
+What to Do:
+
+Ask a peer to test:
+
+Does login work?
+
+Can they add a note?
+
+Observe confusion points
+
+Improve based on feedback
+
+✅ Day 15: Add a Fun/Unique Feature
+Examples:
+
+Dark Mode toggle
+
+Emoji reactions to notes
+
+Shadcn UI toasts
+
+Sound on save
+
+Mini leaderboard for most notes
+
+✅ Day 16 (Optional): Rest or Polish UI
+✅ Day 17: Practice Git Workflow
+To Do:
+
+Use proper commit messages:
+
+feat: added note form
+
+fix: login redirect bug
+
+Create a branch: feature/emoji-support
+
+Push and create Pull Request
+
+✅ Day 18: DRY Your Code
+Tasks:
+
+Create reusable components:
+
+<NoteCard />
+
+<FormInput />
+
+<Loader />
+
+Move repeated logic to utility functions
+
